@@ -110,6 +110,31 @@ export class SCSRenderer {
       primitive.visible = true;
       sequence.forEach((s) => (s.visible = true));
       other.visible = false;
+
+      this.renderer.setRenderTarget(this.fb2);
+
+      // Draw front of X where alphaID = 1
+      this.state.set({
+        colorMask: [true, true, true, true],
+        faceCulling: true,
+        cullFace: gl.BACK,
+        depthMask: false,
+        depthFunc: gl.LESS,
+        depthTest: false,
+        stencilTest: false,
+      });
+
+      drawMeshDirect(this.renderer, primitive, camera);
+
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+      this.renderer.setRenderTarget(this.renderTarget);
+      this.planeRenderer.render(
+        alphaFilterMaterial(1, this.fb1.texture, this.fb2.texture)
+      );
+
+      gl.disable(gl.BLEND);
     };
 
     const render2 = (i) => () => {
@@ -128,10 +153,15 @@ export class SCSRenderer {
 
       drawMeshDirect(this.renderer, p, camera);
 
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
       this.renderer.setRenderTarget(this.renderTarget);
       this.planeRenderer.render(
         alphaFilterMaterial(id, this.fb1.texture, this.fb2.texture)
       );
+
+      gl.disable(gl.BLEND);
     };
 
     other.visible = true;
@@ -167,6 +197,9 @@ export class SCSRenderer {
       sequence.forEach((s) => (s.visible = true));
       other.visible = false;
 
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
       this.renderer.setRenderTarget(this.renderTarget);
       this.planeRenderer.render(
         alphaFilterMaterial(
@@ -176,6 +209,8 @@ export class SCSRenderer {
           true
         )
       );
+
+      gl.disable(gl.BLEND);
     };
 
     scene.onAfterRender = render3;
