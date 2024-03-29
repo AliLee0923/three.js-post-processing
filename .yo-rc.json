@@ -1,0 +1,8 @@
+{
+  "generator-parcel": {
+    "promptValues": {
+      "typecript": false,
+      "sass": false
+    }
+  }
+}
