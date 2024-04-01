@@ -62,7 +62,7 @@ export const createRenderTarget = (
 
 export const createHemiLight = () => {
   return new THREE.HemisphereLight(
-    new THREE.Color().setRGB(1, 1, 1),
+    new THREE.Color().setRGB(5, 5, 5),
     new THREE.Color().setRGB(0.6, 0.6, 0.6),
     1
   );

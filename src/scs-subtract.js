@@ -1,6 +1,7 @@
 import { createRenderTarget, drawMeshDirect } from "./utils";
 import { alphaIDMaterial, alphaFilterMaterial } from "./alpha-material";
 import { ScreenPlaneRenderer } from "./screen-plane-renderer";
+import * as THREE from "three";
 
 export class SCSRenderer {
   constructor(state, renderer, renderTarget) {
@@ -8,7 +9,8 @@ export class SCSRenderer {
     this.renderer = renderer;
     this.renderTarget = renderTarget;
 
-    const { width, height } = renderer.getSize();
+    const size = new THREE.Vector2();
+    const { width, height } = renderer.getSize(size);
 
     this.fb1 = createRenderTarget(width, height);
     this.fb2 = createRenderTarget(width, height);
@@ -20,7 +22,7 @@ export class SCSRenderer {
   renderSubtract(scene, camera, primitive, sequence, other) {
     this.state.push();
 
-    const gl = this.renderer.context;
+    const gl = this.renderer.getContext();
 
     const render = () => {
       this.renderer.setRenderTarget(this.fb2);
@@ -167,13 +169,15 @@ export class SCSRenderer {
     other.visible = true;
 
     scene.onAfterRender = render;
-    this.renderer.render(scene, camera, this.dummyTarget);
+    this.renderer.setRenderTarget(this.dummyTarget);
+    this.renderer.render(scene, camera);
     other.visible = false;
     scene.onAfterRender = null;
 
     for (let i = 0; i < sequence.length; i++) {
       scene.onAfterRender = render2(i);
-      this.renderer.render(scene, camera, this.dummyTarget);
+      this.renderer.setRenderTarget(this.dummyTarget);
+      this.renderer.render(scene, camera);
     }
 
     const render3 = () => {
@@ -215,7 +219,8 @@ export class SCSRenderer {
 
     scene.onAfterRender = render3;
     other.visible = true;
-    this.renderer.render(scene, camera, this.dummyTarget);
+    this.renderer.setRenderTarget(this.dummyTarget);
+    this.renderer.render(scene, camera);
 
     this.state.pop();
   }

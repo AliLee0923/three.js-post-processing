@@ -10,8 +10,8 @@
   "author": "",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "three": "^0.97.0",
-    "three-full": "^11.3.2"
+    "three": "^0.163.0",
+    "three-full": "^28.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^9.1.5",

@@ -9,7 +9,7 @@ export class ScreenPlaneRenderer {
     this.scene = new THREE.Scene();
 
     this.plane = new THREE.Mesh(
-      new THREE.PlaneBufferGeometry(2, 2),
+      new THREE.PlaneGeometry(2, 2),
       new THREE.MeshBasicMaterial({ color: "white" })
     );
 
@@ -31,14 +31,15 @@ export class ScreenPlaneRenderer {
       isTexture = true;
     }
 
-    const gl = this.renderer.context;
+    const gl = this.renderer.getContext();
 
     this.state.push();
     this.state.set({
       cullFace: gl.BACK,
     });
 
-    this.renderer.render(this.scene, this.camera, this.target);
+    this.renderer.setRenderTarget(this.target);
+    this.renderer.render(this.scene, this.camera);
 
     if (!isTexture) {
       this.plane.material = oldMaterial;

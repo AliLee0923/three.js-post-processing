@@ -6064,15 +6064,15 @@ terser@^5.6.1:
     commander "^2.20.0"
     source-map-support "~0.5.20"
 
-three-full@^11.3.2:
-  version "11.3.3"
-  resolved "https://registry.yarnpkg.com/three-full/-/three-full-11.3.3.tgz#cc4c72168e8b6bc653dfd68dc2e7dae89f25ddee"
-  integrity sha512-betvKpxpjbRpyQEcwowhS192HjhatWGvYkjCw+PyjKVkOK3YON5WcRbIu6u7X+2l5eWBUKN3mGIPRDulpZ5fCA==
+three-full@^28.0.2:
+  version "28.0.2"
+  resolved "https://registry.yarnpkg.com/three-full/-/three-full-28.0.2.tgz#5e75f28904bd6050f868d68b7e68ac747e2a8c76"
+  integrity sha512-KJKj47qYcRbT6efPQ5kV5/uxiIq9lX0tf/eK2B6KarqRUY8JcF+vN9R5r+6wZMekBrO/sGD6gEQkKUcCN7G7tA==
 
-three@^0.97.0:
-  version "0.97.0"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.97.0.tgz#76141e1b0ace14246fe9198a458fefddc98a4e30"
-  integrity sha512-ctZF79O1R2aMIDnz9cV5GUIONyFnYvfQKg4+EAwEVaEr1mgy99rglstH6hhRdIThu3SOa4Ns5da/Ee5fTbWc9A==
+three@^0.163.0:
+  version "0.163.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.163.0.tgz#cbfefbfd64a1353ab7cc8bf0fc396ddca1875a49"
+  integrity sha512-HlMgCb2TF/dTLRtknBnjUTsR8FsDqBY43itYop2+Zg822I+Kd0Ua2vs8CvfBVefXkBdNDrLMoRTGCIIpfCuDew==
 
 through2@^2.0.0, through2@~2.0.3:
   version "2.0.5"

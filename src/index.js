@@ -26,40 +26,40 @@ renderer.setClearColor(new THREE.Color().setRGB(1, 1, 1));
 const scene = new THREE.Scene();
 
 const cube = new THREE.Mesh(
-  new THREE.BoxBufferGeometry(10, 10, 1),
+  new THREE.BoxGeometry(10, 10, 1),
   new THREE.MeshStandardMaterial({ color: randomRGBColor() })
 );
 
 const sphere = new THREE.Mesh(
-  new THREE.SphereBufferGeometry(1, 22, 22),
+  new THREE.SphereGeometry(1, 22, 22),
   new THREE.MeshStandardMaterial({ color: randomRGBColor() })
 );
 
 sphere.position.set(0, 0, 0.25);
 
 const sphere2 = new THREE.Mesh(
-  new THREE.SphereBufferGeometry(1, 22, 22),
+  new THREE.SphereGeometry(1, 22, 22),
   new THREE.MeshStandardMaterial({ color: randomRGBColor() })
 );
 
 sphere2.position.set(-2, -2, 0.25);
 
 const sphere3 = new THREE.Mesh(
-  new THREE.SphereBufferGeometry(1, 22, 22),
+  new THREE.SphereGeometry(1, 22, 22),
   new THREE.MeshStandardMaterial({ color: randomRGBColor() })
 );
 
 sphere3.position.set(2, 2, 0.25);
 
 const sphere4 = new THREE.Mesh(
-  new THREE.SphereBufferGeometry(1, 22, 22),
+  new THREE.SphereGeometry(1, 22, 22),
   new THREE.MeshStandardMaterial({ color: randomRGBColor() })
 );
 
 sphere4.position.set(2, 2, 4);
 
 const sphere5 = new THREE.Mesh(
-  new THREE.SphereBufferGeometry(1, 22, 22),
+  new THREE.SphereGeometry(1, 22, 22),
   new THREE.MeshStandardMaterial({ color: randomRGBColor() })
 );
 
@@ -83,9 +83,9 @@ camera.position.set(10, -2, 8);
 const controls = new T.OrbitControls(camera, renderer.domElement); // Attach controls to the camera and renderer
 renderer.autoClear = false;
 
-const state = new State(renderer.context);
+const state = new State(renderer.getContext());
 
-const scsRenderer = new SCSRenderer(state, renderer);
+const scsRenderer = new SCSRenderer(state, renderer, null);
 
 let t = 0;
 const frame = () => {
