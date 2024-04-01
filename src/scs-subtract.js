@@ -115,7 +115,6 @@ export class SCSRenderer {
 
       this.renderer.setRenderTarget(this.fb2);
 
-      // Draw front of X where alphaID = 1
       this.state.set({
         colorMask: [true, true, true, true],
         faceCulling: true,

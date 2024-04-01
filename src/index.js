@@ -11,7 +11,6 @@ const canvas = document.getElementById("canvas");
 canvas.width = width;
 canvas.height = height;
 
-// Create renderer
 const renderer = new THREE.WebGLRenderer({
   canvas,
   antialias: false,
@@ -22,7 +21,6 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setClearColor(new THREE.Color().setRGB(1, 1, 1));
 
-// Create scene
 const scene = new THREE.Scene();
 
 const cube = new THREE.Mesh(
